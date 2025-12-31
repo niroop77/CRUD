@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import Navbar from "./Crud/Navbar";
 
-function Home() {
- return (
-  <>
-    <Navbar />
+function Banner() {
+  return (
     <div className="container my-5">
       <div className="hero-box text-center">
         <h1 className="hero-title">
@@ -12,7 +9,7 @@ function Home() {
         </h1>
 
         <p className="hero-subtitle">
-          Perform Create, Read, Update, and Delete operations using
+          Build, manage, and test data seamlessly using
         </p>
 
         <Link
@@ -24,8 +21,7 @@ function Home() {
         </Link>
       </div>
     </div>
-  </>
-);
+  );
 }
 
-export default Home;
+export default Banner;

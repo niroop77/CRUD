@@ -1,12 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import Banner from "../Banner";
 
 function Navbar() {
   return (
+    <>
+    <div>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
       <div className="container">
 
         {/* LOGO */}
-        <NavLink className="navbar-brand fw-bold fs-4" to="/crud/view">
+        <NavLink className="navbar-brand fw-bold fs-4" to="/">
           CRUD<span className="text-warning">App</span>
         </NavLink>
 
@@ -53,6 +56,8 @@ function Navbar() {
         </div>
       </div>
     </nav>
+</div>
+    </>
   );
 }
 

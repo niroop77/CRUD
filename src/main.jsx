@@ -13,6 +13,7 @@ import Navbar from './Crud/Navbar'
 import Adduser from './Crud/Adduser'
 import Viewuser from './Crud/Viewuser'
 import Tableview from './Crud/Tableview'
+import Home from './Home'
 // Layout
 function CrudLayout() {
   return (
@@ -28,24 +29,23 @@ function CrudLayout() {
 // Router
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <CrudLayout />,
-    children: [
-      {
-        path: 'crud/add',
-        element: <Adduser />,
-      },
-      {
-        path: 'crud/view',
-        element: <Viewuser />,
-      },
-      {
-        path: 'crud/view/table',
-        element: <Tableview />,
-      },
-    ],
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/crud/add",
+    element: <Adduser />,
+  },
+  {
+    path: "/crud/view",
+    element: <Viewuser />,
+  },
+  {
+    path: "/crud/view/table",
+    element: <Tableview />,
   },
 ]);
+
 
 // Render
 createRoot(document.getElementById('root')).render(

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 function Adduser() {
   const [studentId, setStudentId] = useState("");
@@ -45,6 +46,8 @@ function Adduser() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="container d-flex justify-content-center mt-5">
       <div className="card shadow-lg p-4 w-100" style={{ maxWidth: "660px" }}>
         <h5 className="text-center text-primary mb-4">
@@ -152,6 +155,7 @@ function Adduser() {
 
       </div>
     </div>
+    </>
   );
 }
 

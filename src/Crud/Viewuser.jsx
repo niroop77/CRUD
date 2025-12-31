@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Viewuser() {
   const [students, setStudents] = useState(() => {
@@ -33,6 +34,8 @@ function Viewuser() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="container mt-4">
       <h3 className="text-center text-primary mb-4">
         <i className="bi bi-people-fill me-2"></i>
@@ -65,6 +68,7 @@ function Viewuser() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 
