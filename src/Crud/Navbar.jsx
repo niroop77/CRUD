@@ -2,31 +2,39 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
       <div className="container">
-        <NavLink className="navbar-brand" to="/crud/view">
-          CRUD APP
+
+        {/* LOGO */}
+        <NavLink className="navbar-brand fw-bold fs-4" to="/crud/view">
+          CRUD<span className="text-warning">App</span>
         </NavLink>
 
+        {/* TOGGLER */}
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* MENU */}
         <div className="collapse navbar-collapse" id="navMenu">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-3 text-center">
+
             <li className="nav-item">
               <NavLink
                 to="/crud/add"
                 className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
+                  `nav-link px-3 ${isActive ? "active fw-semibold" : ""}`
                 }
               >
-                Add User
+                ➕ Add User
               </NavLink>
             </li>
 
@@ -34,12 +42,13 @@ function Navbar() {
               <NavLink
                 to="/crud/view"
                 className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
+                  `nav-link px-3 ${isActive ? "active fw-semibold" : ""}`
                 }
               >
-                View User
+                👁️ View Users
               </NavLink>
             </li>
+
           </ul>
         </div>
       </div>

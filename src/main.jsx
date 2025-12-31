@@ -11,7 +11,7 @@ import './style.css'
 // Components
 import Navbar from './Crud/Navbar'
 import Adduser from './Crud/Adduser'
-import Viewuser from './Crud/viewuser'
+import Viewuser from './Crud/Viewuser'
 import Tableview from './Crud/Tableview'
 // Layout
 function CrudLayout() {
