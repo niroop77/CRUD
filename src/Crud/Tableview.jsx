@@ -21,19 +21,21 @@ function Tableview () {
         fetchStudents();
       }, []);
 
-      const deleteStudent = (id) => {
+      const deleteStudent = async (id) => {
+  if (window.confirm("Are you sure to delete ?")) {
+    try {
+      await axios.delete(
+        "https://69537a1da319a928023b9138.mockapi.io/api/students/" + id
+      );
 
-        if(window.confirm("Are you sure to delete ?")) {
- console.log("In")
-            axios.delete('https://69537a1da319a928023b9138.mockapi.io/api/students/'+id).then((res) => {
-                console.log(res)
-                nav("/crud/view/table")
-            }).catch((err) => {
-                    alert(err);
-            });
-        }
+      // ✅ Remove deleted student from UI
+      setStudents((prev) => prev.filter((student) => student.id !== id));
+    } catch (err) {
+      alert("Delete failed");
+    }
+  }
+};
 
-      }
     
     return(
         <>
@@ -44,72 +46,51 @@ function Tableview () {
         Table View
       </h3>
       <div className="table-responsive">
-<table className="table table-hover">
-    <thead>
-        <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Mobile
-        </th>
-        <th>
-            Address
-        </th>
-         <th>
-            Options
-        </th>
-        </tr>
+  <table className="table table-hover table-bordered align-middle custom-table">
+    <thead className="table-primary text-center">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Options</th>
+      </tr>
     </thead>
+
     <tbody>
-       {
-        students.map((student) =>{
-            return(
-                <tr key={student.id}>
-                    <td>
-                        {student.student_id}
-                    </td>
-                    <td>
-                        {student.first_name}{student.last_name}
-                    </td>
-                    <td>
-                        {student.mobile}
-                    </td>
-                    <td>
-                        {student.address}
-                    </td>
-                    <td>
-                        <Link  onClick={() => deleteStudent(student.id)} className="btn btn-danger">Delete</Link>
-                    </td>
-                </tr>
-            )
-        })
-       }
-    </tbody>
-    <tfoot>
-       <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Mobile
-        </th>
-        <th>
-            Address
-        </th>
-         <th>
-            Options
-        </th>
+      {students.map((student) => (
+        <tr key={student.id}>
+          <td className="text-truncate" style={{ maxWidth: "180px" }}>
+            {student.student_id}
+          </td>
+          <td className="fw-semibold">
+            {student.first_name} {student.last_name}
+          </td>
+          <td>{student.mobile}</td>
+          <td>{student.address}</td>
+          <td className="text-center">
+            <button
+              onClick={() => deleteStudent(student.id)}
+              className="btn btn-sm btn-outline-danger"
+            >
+              <i className="bi bi-trash"></i>
+            </button>
+          </td>
         </tr>
+      ))}
+    </tbody>
+    <tfoot className="table-primary text-center">
+        <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Options</th>
+      </tr>
     </tfoot>
-</table>
-      </div>
+  </table>
+</div>
+
       </div>
       </>
     )

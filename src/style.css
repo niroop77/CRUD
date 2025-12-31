@@ -97,3 +97,31 @@
   background-color: #ffc107;
   color: #000;
 }
+/* Table enhancement */
+.custom-table {
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+/* Zebra rows */
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect */
+.custom-table tbody tr:hover {
+  background-color: #eef4ff;
+}
+
+/* Mobile text handling */
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Button polish */
+.custom-table .btn {
+  padding: 4px 8px;
+}
