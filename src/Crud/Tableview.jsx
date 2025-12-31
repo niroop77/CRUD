@@ -49,7 +49,6 @@ function Tableview () {
   <table className="table table-hover table-bordered align-middle custom-table">
     <thead className="table-primary text-center">
       <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Mobile</th>
         <th>Address</th>
@@ -57,12 +56,9 @@ function Tableview () {
       </tr>
     </thead>
 
-    <tbody>
+    <tbody className="text-center">
       {students.map((student) => (
         <tr key={student.id}>
-          <td className="text-truncate" style={{ maxWidth: "180px" }}>
-            {student.student_id}
-          </td>
           <td className="fw-semibold">
             {student.first_name} {student.last_name}
           </td>
@@ -81,7 +77,6 @@ function Tableview () {
     </tbody>
     <tfoot className="table-primary text-center">
         <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Mobile</th>
         <th>Address</th>
@@ -90,7 +85,6 @@ function Tableview () {
     </tfoot>
   </table>
 </div>
-
       </div>
       </>
     )
