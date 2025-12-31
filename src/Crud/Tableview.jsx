@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 function Tableview () {
     const [students, setStudents] = useState([]);
       let nav = useNavigate();
@@ -35,6 +36,8 @@ function Tableview () {
       }
     
     return(
+        <>
+        <Navbar />
        <div className="container mt-4">
       <h3 className="text-center text-primary mb-4">
         <i className="bi bi-people-fill me-2"></i>
@@ -108,6 +111,7 @@ function Tableview () {
 </table>
       </div>
       </div>
+      </>
     )
 }
 export default Tableview;
