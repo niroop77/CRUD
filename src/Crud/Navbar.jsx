@@ -43,7 +43,7 @@ function Navbar() {
 
             <li className="nav-item">
               <NavLink
-                to="/crud/view"
+                to="/crud/view/table"
                 className={({ isActive }) =>
                   `nav-link px-3 ${isActive ? "active fw-semibold" : ""}`
                 }
