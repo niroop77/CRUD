@@ -36,6 +36,11 @@ function Tableview () {
   }
 };
 
+const editStudent = (id) => {
+
+    nav(`/crud/edit/${id}`);
+}
+
     
     return(
         <>
@@ -65,6 +70,12 @@ function Tableview () {
           <td>{student.mobile}</td>
           <td>{student.address}</td>
           <td className="text-center">
+            <button
+              onClick={() => editStudent(student.id)}
+              className="btn btn-sm btn-outline-warning"
+            >
+              <i className="bi bi-pencil-square"></i>
+            </button> &nbsp; &nbsp;
             <button
               onClick={() => deleteStudent(student.id)}
               className="btn btn-sm btn-outline-danger"

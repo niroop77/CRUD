@@ -1,11 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
-import Banner from "../Banner";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../ThemeContext";
 
 function Navbar() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <>
-    <div>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+    <nav
+      className={`navbar navbar-expand-lg sticky-top shadow ${
+        theme === "dark" ? "navbar-dark bg-dark" : "navbar-light bg-light"
+      }`}
+    >
       <div className="container">
 
         {/* LOGO */}
@@ -52,12 +57,20 @@ function Navbar() {
               </NavLink>
             </li>
 
+            {/* THEME TOGGLE */}
+            <li className="nav-item">
+              <button
+                onClick={toggleTheme}
+                className="btn btn-sm btn-outline-secondary ms-lg-3"
+              >
+                {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
+              </button>
+            </li>
+
           </ul>
         </div>
       </div>
     </nav>
-</div>
-    </>
   );
 }
 

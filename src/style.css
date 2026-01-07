@@ -26,7 +26,6 @@
 }
 
 .navbar .nav-link {
-  color: #fff !important;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -124,4 +123,332 @@
 /* Button polish */
 .custom-table .btn {
   padding: 4px 8px;
+}
+/* Light Theme */
+.theme-light {
+  background-color: #f8f9fa;
+  color: #212529;
+  min-height: 100vh;
+}
+
+/* Dark Theme */
+.theme-dark {
+  background-color: #121212;
+  color: #eaeaea;
+  min-height: 100vh;
+}
+
+/* Cards */
+.theme-dark .card {
+  background-color: #1e1e1e;
+  color: #eaeaea;
+}
+
+/* Tables */
+.theme-dark .table {
+  color: #eaeaea;
+}
+
+.theme-dark .table-bordered {
+  border-color: #333;
+}
+
+/* Forms */
+.theme-dark .form-control {
+  background-color: #1e1e1e;
+  color: #eaeaea;
+  border-color: #444;
+}
+/* ===============================
+   LIGHT THEME BRANDING
+================================ */
+
+.theme-light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Navbar */
+.theme-light .navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Brand */
+.theme-light .navbar-brand {
+  color: #0f172a !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.theme-light .navbar-brand span {
+  color: #f59e0b;
+}
+
+/* Nav links */
+.theme-light .navbar .nav-link {
+  color: #334155 !important;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+/* Hover */
+.theme-light .navbar .nav-link:hover {
+  color: #2563eb !important;
+}
+
+/* Active link underline */
+.theme-light .navbar .nav-link.active {
+  color: #2563eb !important;
+  font-weight: 600;
+}
+
+.theme-light .navbar .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background-color: #f59e0b;
+  border-radius: 2px;
+}
+
+/* Buttons */
+.theme-light .btn-outline-secondary {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.theme-light .btn-outline-secondary:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+/* ===============================
+   LIGHT THEME NAVBAR FIX
+================================ */
+
+.theme-light .navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Brand */
+.theme-light .navbar-brand {
+  color: #0f172a !important;
+}
+
+.theme-light .navbar-brand span {
+  color: #f59e0b;
+}
+
+/* NAV LINKS – DEFAULT */
+.theme-light .navbar-nav .nav-link {
+  color: #0f172a !important;   /* FIX: darker text */
+  font-weight: 500;
+  opacity: 1;                 /* FIX: remove faded look */
+  position: relative;
+}
+
+/* HOVER */
+.theme-light .navbar-nav .nav-link:hover {
+  color: #2563eb !important;
+}
+
+/* ACTIVE LINK */
+.theme-light .navbar-nav .nav-link.active {
+  color: #2563eb !important;
+  font-weight: 600;
+}
+
+/* ACTIVE UNDERLINE */
+.theme-light .navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 3px;
+  background-color: #f59e0b;
+  border-radius: 2px;
+}
+
+/* DARK/LIGHT BUTTON */
+.theme-light .btn-outline-secondary {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.theme-light .btn-outline-secondary:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.theme-light .navbar .nav-link{
+  color: #000 !important;
+}
+/* =====================================
+   TABLE + PAGE COLORS BASED ON THEME
+   (NO LAYOUT CHANGE)
+===================================== */
+
+/* ---------- LIGHT THEME ---------- */
+.theme-light .container {
+  background-color: transparent;
+}
+
+/* Table */
+.theme-light .custom-table {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+.theme-light .custom-table thead,
+.theme-light .custom-table tfoot {
+  background-color: #eaf1ff;
+  color: #0f172a;
+}
+
+.theme-light .custom-table tbody tr:hover {
+  background-color: #f1f5ff;
+}
+
+/* ---------- DARK THEME ---------- */
+.theme-dark .container {
+  background-color: transparent;
+}
+
+/* Table */
+.theme-dark .custom-table {
+  background-color: #1e1e1e;
+  color: #e5e7eb;
+}
+
+.theme-dark .custom-table thead,
+.theme-dark .custom-table tfoot {
+  background-color: #2a2a2a !important;
+  color: #f9fafb;
+}
+
+.theme-dark .custom-table tbody tr {
+  border-color: #333;
+}
+
+.theme-dark .custom-table tbody tr:hover {
+  background-color: #262626;
+}
+
+/* Buttons */
+.theme-dark .btn-outline-warning {
+  color: #facc15;
+  border-color: #facc15;
+}
+
+.theme-dark .btn-outline-danger {
+  color: #f87171;
+  border-color: #f87171;
+}
+/* =====================================
+   ADD USER PAGE – THEME COLORS
+   (NO LAYOUT CHANGE)
+===================================== */
+
+/* ---------- LIGHT THEME ---------- */
+.theme-light .card {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+.theme-light .form-label {
+  color: #334155;
+  font-weight: 500;
+}
+
+.theme-light .form-control {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5f5;
+}
+
+.theme-light .form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.2);
+}
+
+/* ---------- DARK THEME ---------- */
+.theme-dark .card {
+  background-color: #1e1e1e;
+  color: #e5e7eb;
+}
+
+.theme-dark .form-label {
+  color: #cbd5f5;
+}
+
+.theme-dark .form-control {
+  background-color: #262626;
+  color: #f9fafb;
+  border-color: #444;
+}
+
+.theme-dark .form-control::placeholder {
+  color: #9ca3af;
+}
+
+.theme-dark .form-control:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 0.15rem rgba(96, 165, 250, 0.25);
+}
+
+/* Submit Button */
+.theme-dark .btn-primary {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.theme-dark .btn-primary:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+/* ================================
+   FULL PAGE THEME FIX (CRITICAL)
+================================ */
+
+/* Ensure full height */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Light theme full background */
+.theme-light {
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+/* Dark theme full background */
+.theme-dark {
+  min-height: 100vh;
+  background-color: #0b1220; /* DARK CANVAS */
+}
+
+/* Prevent Bootstrap containers from painting white */
+.theme-dark .container,
+.theme-light .container {
+  background: transparent !important;
+}
+
+/* Ensure cards sit on dark canvas */
+.theme-dark .card {
+  background-color: #1e293b;
+  color: #e5e7eb;
+}
+
+/* Ensure form inputs are dark */
+.theme-dark .form-control {
+  background-color: #0f172a;
+  color: #e5e7eb;
+  border-color: #334155;
 }

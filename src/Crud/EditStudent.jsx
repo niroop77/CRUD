@@ -1,24 +1,47 @@
-import { useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
 
-function Adduser() {
-  const [studentId, setStudentId] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [address, setAddress] = useState("");
+function EditStudent() {
+
+   let {id} = useParams();
+
+    const [studentId, setStudentId] = useState("");
+     const [firstName, setFirstName] = useState("");
+     const [lastName, setLastName] = useState("");
+     const [email, setEmail] = useState("");
+     const [mobile, setMobile] = useState("");
+     const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate=useNavigate();
-  const getuserdata = async (e) => {
-    e.preventDefault();
-    setLoading(true);
 
-    try {
-      const response = await axios.post(
-        "https://69537a1da319a928023b9138.mockapi.io/api/students",
+  let nav = useNavigate();
+
+
+useEffect(() => {
+
+    axios.get(`https://69537a1da319a928023b9138.mockapi.io/api/students/${id}`).then((res) => {
+
+        // console.log(res.data);
+        setStudentId(res.data.student_id);
+        setFirstName(res.data.first_name);
+        setLastName(res.data.last_name);
+        setEmail(res.data.email);
+        setMobile(res.data.mobile);
+        setAddress(res.data.address);
+
+    }).catch((err) => {
+        alert(err);
+
+    })
+
+},[])
+
+const editStudent = (e) => {
+
+    e.preventDefault();
+
+    axios.put(`https://69537a1da319a928023b9138.mockapi.io/api/students/${id}`, 
         {
           student_id: studentId,
           first_name: firstName,
@@ -26,38 +49,26 @@ function Adduser() {
           email: email,
           mobile: mobile,
           address: address,
-        }
-      );
+        }).then((res) => {
+                nav("/crud/view/table");
+        }).catch((err) => {
+            alert(err);
+        })
 
-      console.log(response.data);
-      alert("Student Added Successfully!");
+}
 
-      // Clear form
-      setStudentId("");
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setMobile("");
-      setAddress("");
-      // ✅ REDIRECT TO TABLE VIEW
-      navigate("/crud/view/table");
-    } catch (err) {
-      alert("Failed to add student");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <>
-    <Navbar />
+    return(
+        
+        <>
+        
+             <Navbar/>
     <div className="container d-flex justify-content-center mt-5">
       <div className="card shadow-lg p-4 w-100" style={{ maxWidth: "660px" }}>
         <h5 className="text-center text-primary mb-4">
           <i className="bi bi-person-plus-fill me-2"></i>
-          Add Student
+          Edit Student
         </h5>
-<form onSubmit={getuserdata}>
+<form onSubmit={editStudent}>
   <div className="row g-3">
     {/* Student ID */}
     <div className="col-md-6">
@@ -69,6 +80,7 @@ function Adduser() {
         value={studentId}
         onChange={(e) => setStudentId(e.target.value)}
         required
+        // defaultValue={studentId}
       />
     </div>
 
@@ -160,6 +172,11 @@ function Adduser() {
     </div>
     </>
   );
+
+
+      
+    
+
 }
 
-export default Adduser;
+export default EditStudent;
