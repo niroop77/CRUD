@@ -452,3 +452,13 @@ body,
   color: #e5e7eb;
   border-color: #334155;
 }
+/* Make toggle button visually align with hamburger */
+.navbar .btn-outline-secondary {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle-1{
+  margin-left: 30px !important;
+}
