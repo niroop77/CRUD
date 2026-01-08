@@ -48,7 +48,7 @@ const editStudent = (id) => {
        <div className="container mt-4">
       <h3 className="text-center text-primary mb-4">
         <i className="bi bi-people-fill me-2"></i>
-        Table View
+        Students Table
       </h3>
       <div className="table-responsive">
   <table className="table table-hover table-bordered align-middle custom-table">

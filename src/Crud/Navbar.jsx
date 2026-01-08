@@ -48,7 +48,7 @@ function Navbar() {
                   `nav-link ${isActive ? "active fw-semibold" : ""}`
                 }
               >
-                ➕ Add User
+                ➕ Add Student
               </NavLink>
             </li>
 
@@ -59,7 +59,7 @@ function Navbar() {
                   `nav-link ${isActive ? "active fw-semibold" : ""}`
                 }
               >
-                👁️ View Users
+                👁️ View Students
               </NavLink>
             </li>
 

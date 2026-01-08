@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 function Adduser() {
   const [studentId, setStudentId] = useState("");
@@ -30,7 +31,10 @@ function Adduser() {
       );
 
       console.log(response.data);
-      alert("Student Added Successfully!");
+      // alert("Student Added Successfully!");
+       toast.success('Hey 👋! Student Added Successfully!', {
+      position: 'top-right',
+    });
 
       // Clear form
       setStudentId("");
@@ -40,16 +44,17 @@ function Adduser() {
       setMobile("");
       setAddress("");
       // ✅ REDIRECT TO TABLE VIEW
-      navigate("/crud/view/table");
+     
     } catch (err) {
       alert("Failed to add student");
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <>
+   
     <Navbar />
     <div className="container d-flex justify-content-center mt-5">
       <div className="card shadow-lg p-4 w-100" style={{ maxWidth: "660px" }}>
@@ -158,6 +163,7 @@ function Adduser() {
 
       </div>
     </div>
+     <ToastContainer />
     </>
   );
 }
