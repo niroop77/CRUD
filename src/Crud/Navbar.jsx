@@ -11,17 +11,24 @@ function Navbar() {
         theme === "dark" ? "navbar-dark bg-dark" : "navbar-light bg-light"
       }`}
     >
-      <div className="container">
+      <div className="container d-flex align-items-center justify-content-between">
 
         {/* LOGO */}
         <NavLink className="navbar-brand fw-bold fs-4" to="/">
           CRUD<span className="text-warning">App</span>
         </NavLink>
 
-        {/* RIGHT CONTROLS (HAMBURGER + TOGGLE) */}
+        {/* RIGHT CONTROLS (THEME + HAMBURGER) */}
         <div className="d-flex align-items-center gap-2">
 
-          
+          {/* THEME TOGGLE */}
+          <button
+            onClick={toggleTheme}
+            className="btn btn-sm btn-outline-secondary"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? "🌞" : "🌙"}
+          </button>
 
           {/* HAMBURGER */}
           <button
@@ -36,43 +43,35 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
+      </div>
 
-        {/* MENU */}
-        <div className="collapse navbar-collapse" id="navMenu">
-          <ul className="navbar-nav ms-auto text-center gap-lg-3">
+      {/* MENU (SEPARATE ROW) */}
+      <div className="collapse navbar-collapse" id="navMenu">
+        <ul className="navbar-nav text-center gap-lg-3 mt-3 mt-lg-0">
 
-            <li className="nav-item">
-              <NavLink
-                to="/crud/add"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active fw-semibold" : ""}`
-                }
-              >
-                ➕ Add Student
-              </NavLink>
-            </li>
+          <li className="nav-item">
+            <NavLink
+              to="/crud/add"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active fw-semibold" : ""}`
+              }
+            >
+              ➕ Add Student
+            </NavLink>
+          </li>
 
-            <li className="nav-item">
-              <NavLink
-                to="/crud/view/table"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active fw-semibold" : ""}`
-                }
-              >
-                👁️ View Students
-              </NavLink>
-            </li>
+          <li className="nav-item">
+            <NavLink
+              to="/crud/view/table"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active fw-semibold" : ""}`
+              }
+            >
+              👁️ View Students
+            </NavLink>
+          </li>
 
-          </ul>
-        </div>
-{/* THEME TOGGLE */}
-          <button
-            onClick={toggleTheme}
-            className="btn btn-sm btn-outline-secondary toggle-1"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "🌞" : "🌙"}
-          </button>
+        </ul>
       </div>
     </nav>
   );
