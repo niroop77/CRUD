@@ -2,102 +2,115 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-function Tableview () {
-    const [students, setStudents] = useState([]);
-      let nav = useNavigate();
-    
-      useEffect(() => {
-        const fetchStudents = async () => {
-          try {
-            const response = await axios.get(
-              "https://69537a1da319a928023b9138.mockapi.io/api/students"
-            );
-            setStudents(response.data);
-          } catch (err) {
-            console.error(err);
-          }
-        };
-    
-        fetchStudents();
-      }, []);
 
-      const deleteStudent = async (id) => {
-  if (window.confirm("Are you sure to delete ?")) {
-    try {
-      await axios.delete(
-        "https://69537a1da319a928023b9138.mockapi.io/api/students/" + id
-      );
+// ✅ Toast imports
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-      // ✅ Remove deleted student from UI
-      setStudents((prev) => prev.filter((student) => student.id !== id));
-    } catch (err) {
-      alert("Delete failed");
+function Tableview() {
+  const [students, setStudents] = useState([]);
+  let nav = useNavigate();
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await axios.get(
+          "https://69537a1da319a928023b9138.mockapi.io/api/students"
+        );
+        setStudents(response.data);
+      } catch (err) {
+        toast.error("Failed to load students");
+      }
+    };
+
+    fetchStudents();
+  }, []);
+
+  const deleteStudent = async (id) => {
+    if (window.confirm("Are you sure to delete ?")) {
+      try {
+        await axios.delete(
+          "https://69537a1da319a928023b9138.mockapi.io/api/students/" + id
+        );
+
+        // ✅ Remove deleted student from UI
+        setStudents((prev) => prev.filter((student) => student.id !== id));
+
+        toast.success("Student deleted successfully");
+      } catch (err) {
+        toast.error("Delete failed");
+      }
     }
-  }
-};
+  };
 
-const editStudent = (id) => {
-
+  const editStudent = (id) => {
     nav(`/crud/edit/${id}`);
-}
+  };
 
-    
-    return(
-        <>
-        <Navbar />
-       <div className="container mt-4">
-      <h3 className="text-center text-primary mb-4">
-        <i className="bi bi-people-fill me-2"></i>
-        Students Table
-      </h3>
-      <div className="table-responsive">
-  <table className="table table-hover table-bordered align-middle custom-table">
-    <thead className="table-primary text-center">
-      <tr>
-        <th>Name</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>Options</th>
-      </tr>
-    </thead>
+  return (
+    <>
+      <Navbar />
 
-    <tbody className="text-center">
-      {students.map((student) => (
-        <tr key={student.id}>
-          <td className="fw-semibold">
-            {student.first_name} {student.last_name}
-          </td>
-          <td>{student.mobile}</td>
-          <td>{student.address}</td>
-          <td className="text-center">
-            <button
-              onClick={() => editStudent(student.id)}
-              className="btn btn-sm btn-outline-warning"
-            >
-              <i className="bi bi-pencil-square"></i>
-            </button> &nbsp; &nbsp;
-            <button
-              onClick={() => deleteStudent(student.id)}
-              className="btn btn-sm btn-outline-danger"
-            >
-              <i className="bi bi-trash"></i>
-            </button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-    <tfoot className="table-primary text-center">
-        <tr>
-        <th>Name</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>Options</th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+      <div className="container mt-4">
+        <h3 className="text-center text-primary mb-4">
+          <i className="bi bi-people-fill me-2"></i>
+          Students Table
+        </h3>
+
+        <div className="table-responsive">
+          <table className="table table-hover table-bordered align-middle custom-table">
+            <thead className="table-primary text-center">
+              <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody className="text-center">
+              {students.map((student) => (
+                <tr key={student.id}>
+                  <td className="fw-semibold">
+                    {student.first_name} {student.last_name}
+                  </td>
+                  <td>{student.mobile}</td>
+                  <td>{student.address}</td>
+                  <td className="text-center">
+                    <button
+                      onClick={() => editStudent(student.id)}
+                      className="btn btn-sm btn-outline-warning"
+                    >
+                      <i className="bi bi-pencil-square"></i>
+                    </button>{" "}
+                    &nbsp; &nbsp;
+                    <button
+                      onClick={() => deleteStudent(student.id)}
+                      className="btn btn-sm btn-outline-danger"
+                    >
+                      <i className="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+
+            <tfoot className="table-primary text-center">
+              <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Options</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
-      </>
-    )
+
+      {/* ✅ Toast Container */}
+      <ToastContainer position="top-right" autoClose={2000} />
+    </>
+  );
 }
+
 export default Tableview;
